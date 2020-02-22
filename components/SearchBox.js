@@ -5,7 +5,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 const InputContainer = styled.div`
-  padding: 5px 10px;
   width: 60%;
 `
 
@@ -14,6 +13,7 @@ const Input = styled.input`
   font-size: 1.2rem;
   line-height: 35px;
 
+  padding: 5px 10px;
   border-radius: 4px;
   margin-bottom: 50px;
   outline-width: 0;
