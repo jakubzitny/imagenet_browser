@@ -1,6 +1,6 @@
 // @flow
 
-const BACKEND_URL = 'http://127.0.0.1:5984'
+const BACKEND_URL = 'http://104.198.35.148:5984'
 const DB_NAME = 'testing3'
 
 export default class FetchUtils {
