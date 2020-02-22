@@ -1,30 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
+## Imagenet browser
 
-## Getting Started
+Loading categories from [imagenet.stanford.edu](http://imagenet.stanford.edu/)...
 
-First, run the development server:
+[![example](./example.gif)](#)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- FE: React (Next) + Flow + Styled components
+- BE: Python + Docker + [CouchDB](https://couchdb.apache.org/)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-## Learn More
+### Functionality
+- Crawls Imagenet synsets
+- Converts from list to tree structure
+  - time complexity = O(N * M * O * S) ~= O(N^3)
+    - N = size of the entries in the list
+    - M = max nested entry (approx constant)
+    - O = max children in a category
+    - S = time of couchdb client to update doc entry (dummy implementation is O(N), can be optimized by indices)
+- CouchDB has built-in REST API with Search
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/zeit/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on ZEIT Now
-
-The easiest way to deploy your Next.js app is to use the [ZEIT Now Platform](https://zeit.co/) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### What can be done for improvement
+- faster data fetching/converting in parallel
+- graphQL API
+- tests (unit tests for FE + BE, E2E tests for FE)
+- improved security and performance of CouchDB
+- nicer frontend with toggleable categories and cached requests (and images possibly)
